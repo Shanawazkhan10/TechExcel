@@ -1,9 +1,9 @@
 import React from "react";
-
+import LeaderTable from "./LeaderTable";
 const Leader = () => {
   return (
     <div>
-      <h1>Ledger</h1>
+      <LeaderTable />
     </div>
   );
 };

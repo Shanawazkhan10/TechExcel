@@ -7,9 +7,11 @@ import {
   RouteProps,
 } from "react-router-dom";
 import "./App.css";
+import Table from "./Screens/demoTable.tsx/table";
 import Leader from "./Screens/Ledger/Leader";
-import TradeHistory from "./Screens/TradeHistory/TradeHistory";
-
+// import Tradede from "./Screens/TradeHistory/TradeHistory";
+import "bootstrap/dist/css/bootstrap.css"; // Import precompiled Bootstrap css
+import TradeDetails from "./Screens/TradeDetails/TradeDetails";
 function App() {
   return (
     <div className="App">
@@ -17,7 +19,8 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/" component={Leader} />
-            <Route exact path="/TradeHistory" component={TradeHistory} />
+            <Route exact path="/Table" component={Table} />
+            <Route exact path="/TradeDetails" component={TradeDetails} />
           </Switch>
         </div>
       </Router>
