@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Col, Row } from "react-bootstrap";
 import { SelectChangeEvent } from "@mui/material/Select";
 import {
@@ -17,12 +18,40 @@ import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import { BsFileEarmarkExcel } from "react-icons/bs";
 import { MdOutlineAssignment } from "react-icons/md";
 import "./style.css";
-
+interface User {
+  SCRIP_NAME: string;
+  TRADE_TIME: string;
+  ORDER_NUMBER: string;
+  TRADE_NUMBER: string;
+  TRADE_TYPE: string;
+  // data need to populated for QTY
+  QTY: string;
+  BUY_PRICE: string;
+  // company: {
+  //   name: string;
+  // };
+}
+export type TUserList = User[];
 const TradeDetailsUi = () => {
   const [age, setAge] = React.useState("");
   const [segment, setSegment] = React.useState("");
   const [value, setValue] = React.useState<Date | null>(null);
-
+  const [ledgerDetails, setLedgerDetails] = useState<TUserList>();
+  useEffect(() => {
+    // console.log(TradeDetails);
+    axios
+      .post<TUserList>("http://localhost:3001/createData")
+      .then((response) => {
+        console.log(response.data.length);
+        if (response.data.length !== undefined) {
+          setLedgerDetails(response.data);
+          console.log(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
@@ -182,164 +211,43 @@ const TradeDetailsUi = () => {
             </Button>
           </Col>
         </Row>
-        <table
-          className="table table-borderless"
-          style={{ marginTop: "10px", padding: "5px" }}
-        >
-          <thead
-            style={{
-              borderTop: "1px solid 	#D3D3D3",
-              borderBottom: "1px solid 	#D3D3D3",
-            }}
+        {ledgerDetails && (
+          <table
+            className="table table-borderless"
+            style={{ marginTop: "10px", padding: "5px" }}
           >
-            <tr>
-              <td>SYMBOL</td>
-              <td>TRADE TIME</td>
-              <td>ORDER ID</td>
-              <td>TRADE ID</td>
-              <td>TYPE</td>
-              <td>QTY</td>
-              <td>PRICE</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@fat</td>
-              <td>@fat</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@fat</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td>@twitter</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+            <thead
+              style={{
+                borderTop: "1px solid 	#D3D3D3",
+                borderBottom: "1px solid 	#D3D3D3",
+              }}
+            >
+              <tr>
+                <td>SYMBOL</td>
+                <td>TRADE TIME</td>
+                <td>ORDER ID</td>
+                <td>TRADE ID</td>
+                <td>TYPE</td>
+                <td>QTY</td>
+                <td>PRICE</td>
+              </tr>
+            </thead>
+            <tbody>
+              {ledgerDetails.map((el) => (
+                <tr>
+                  <td>{el.SCRIP_NAME}</td>
+                  <td>{el.TRADE_TIME}</td>
+                  <td>{el.ORDER_NUMBER}</td>
+                  <td>{el.TRADE_NUMBER}</td>
+                  {/* <td>{el.VOUCHERDATE}</td> */}
+                  {/* <td>{el.TRANS_TYPE}</td> */}
+                  <td>{el.QTY}</td>
+                  <td>{el.BUY_PRICE}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </Box>
     </>
   );

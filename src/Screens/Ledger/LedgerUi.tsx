@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { SelectChangeEvent } from "@mui/material/Select";
+import axios from "axios";
 import {
   InputLabel,
   FormControl,
@@ -17,12 +18,40 @@ import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import { BsFileEarmarkExcel } from "react-icons/bs";
 import { MdOutlineAssignment } from "react-icons/md";
 import "./style.css";
-
+interface User {
+  COCD: string;
+  CONAME: string;
+  DR_AMT: string;
+  CR_AMT: string;
+  VOUCHERDATE: string;
+  TRANS_TYPE: string;
+  VOUCHERNO: string;
+  NARRATION: string;
+  // company: {
+  //   name: string;
+  // };
+}
+export type TUserList = User[];
 const LedgerUi = () => {
   const [age, setAge] = React.useState("");
   const [segment, setSegment] = React.useState("");
   const [value, setValue] = React.useState<Date | null>(null);
-
+  const [ledgerDetails, setLedgerDetails] = useState<TUserList>();
+  useEffect(() => {
+    // console.log(TradeDetails);
+    axios
+      .post<TUserList>("http://localhost:3001/LedgerDetails")
+      .then((response) => {
+        console.log(response.data.length);
+        if (response.data.length !== undefined) {
+          setLedgerDetails(response.data);
+          console.log(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
@@ -183,148 +212,43 @@ const LedgerUi = () => {
             </Button>
           </Col>
         </Row>
-        <table
-          className="table table-borderless"
-          style={{ marginTop: "10px", padding: "5px" }}
-        >
-          <thead
-            style={{
-              borderTop: "1px solid 	#D3D3D3",
-              borderBottom: "1px solid 	#D3D3D3",
-            }}
+
+        {ledgerDetails && (
+          <table
+            className="table table-borderless"
+            style={{ marginTop: "10px", padding: "5px" }}
           >
-            <tr>
-              <td>COCD</td>
-              <td>CONAME</td>
-              <td>DR_AMONUT</td>
-              <td>CR_AMOUNT</td>
-              <td>TRANS_TYPE</td>
-              <td>NARRATION</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>@fat</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td>Larry the Bird</td>
-              <td>Larry the Bird</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+            <thead
+              style={{
+                borderTop: "1px solid 	#D3D3D3",
+                borderBottom: "1px solid 	#D3D3D3",
+              }}
+            >
+              <tr>
+                <td>COCD</td>
+                <td>CONAME</td>
+                <td>DR_AMONUT</td>
+                <td>CR_AMOUNT</td>
+                <td>TRANS_TYPE</td>
+                <td>NARRATION</td>
+              </tr>
+            </thead>
+            <tbody>
+              {ledgerDetails.map((el) => (
+                <tr>
+                  <td>{el.COCD}</td>
+                  <td>{el.CONAME}</td>
+                  <td>{el.DR_AMT}</td>
+                  <td>{el.CR_AMT}</td>
+                  {/* <td>{el.VOUCHERDATE}</td> */}
+                  {/* <td>{el.TRANS_TYPE}</td> */}
+                  <td>{el.VOUCHERNO}</td>
+                  <td>{el.NARRATION}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </Box>
 
       {/* </Container> */}

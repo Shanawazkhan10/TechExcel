@@ -1,5 +1,5 @@
 body {
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
 }
 
 .table {
@@ -27,7 +27,7 @@ body {
 }
 
 .table td {
-  background: #fff;
+  /* background: #fff; */
 }
 
 .table td:first-child {
@@ -321,4 +321,7 @@ p {
 .outlined-select-field ~ .dropdown-icon {
   top: 1rem;
   right: 2.5rem;
+}
+legend {
+  width: auto;
 }
