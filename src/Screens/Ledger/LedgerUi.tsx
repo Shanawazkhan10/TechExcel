@@ -85,7 +85,7 @@ const LedgerUi = () => {
             // marginLeft: "5px",
           }}
         >
-          {/* <Col sm="2">
+          <Col md="2" style={{ marginRight: "1rem" }}>
             <FormControl variant="outlined" sx={{ minWidth: 200 }}>
               <InputLabel variant="outlined" id="demo-simple-select-label">
                 Financial year
@@ -101,8 +101,8 @@ const LedgerUi = () => {
                 <MenuItem value="2020-21">2020-21</MenuItem>
               </Select>
             </FormControl>
-          </Col> */}
-          <Col>
+          </Col>
+          {/* <Col>
             <div className="outlined-input-field">
               <select id="selectLocation" className="outlined-select-field">
                 <option value="" disabled selected></option>
@@ -111,8 +111,8 @@ const LedgerUi = () => {
               <label htmlFor="selectLocation">Financial year</label>
               <i className="material-icons dropdown-icon">arrow_drop_down</i>
             </div>
-          </Col>
-          <Col sm="2">
+          </Col> */}
+          <Col md="2">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="From Date"
@@ -125,7 +125,7 @@ const LedgerUi = () => {
               />
             </LocalizationProvider>
           </Col>
-          <Col sm="2">
+          <Col md="2">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="To Date"
@@ -137,7 +137,7 @@ const LedgerUi = () => {
               />
             </LocalizationProvider>
           </Col>
-          {/* <Col sm="2">
+          <Col md="2">
             <FormControl variant="outlined" sx={{ minWidth: 200 }}>
               <InputLabel variant="outlined" id="demo-simple-select-label">
                 Segments
@@ -158,8 +158,8 @@ const LedgerUi = () => {
                 <MenuItem value="All Segments">Currency</MenuItem>
               </Select>
             </FormControl>
-          </Col> */}
-          <Col>
+          </Col>
+          {/* <Col sm="3">
             <div className="outlined-input-field">
               <select id="selectLocation" className="outlined-select-field">
                 <option value="" disabled selected></option>
@@ -170,7 +170,7 @@ const LedgerUi = () => {
               <label htmlFor="selectLocation">Segments</label>
               <i className="material-icons dropdown-icon">arrow_drop_down</i>
             </div>
-          </Col>
+          </Col> */}
           <Col>
             <Button
               style={{

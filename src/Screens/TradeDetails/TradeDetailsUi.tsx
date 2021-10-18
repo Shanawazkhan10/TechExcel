@@ -135,11 +135,11 @@ const TradeDetailsUi = () => {
           </Col> */}
           <Col sm="2">
             <div className="outlined-input-field">
-              <select id="selectLocation" className="outlined-select-field">
+              <select id="selectSymbol" className="outlined-select-field">
                 <option value="" disabled selected></option>
                 <option value="IDEA">IDEA</option>
               </select>
-              <label htmlFor="selectLocation">Symbol</label>
+              <label htmlFor="selectSymbol">Symbol</label>
               <i className="material-icons dropdown-icon">arrow_drop_down</i>
             </div>
           </Col>
