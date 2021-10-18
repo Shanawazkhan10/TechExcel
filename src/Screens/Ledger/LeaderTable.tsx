@@ -37,13 +37,13 @@ const LeaderTable = () => {
     <div>
       <h1>LEDGER REPORT</h1>
       <div className="outlined-input-field">
-        <i className="material-icons">my_location</i>
+        {/* <i className="material-icons">my_location</i> */}
         <select id="selectLocation" className="outlined-select-field">
           <option value="" disabled selected></option>
           <option value="Asia">Asia</option>
-          <option value="Africa">Africa</option>
+          {/* <option value="Africa">Africa</option>
           <option value="Europe">Europe</option>
-          <option value="North America">North America</option>
+          <option value="North America">North America</option> */}
           <option value="South America">South America</option>
           <option value="Australia">Australia</option>
           <option value="Antarctica">Antarctica</option>
@@ -53,7 +53,7 @@ const LeaderTable = () => {
       </div>
       <br />
       <div className="outlined-input-field">
-        <i className="material-icons">account_circle</i>
+        {/* <i className="material-icons">account_circle</i> */}
         <input
           type="text"
           id="username"
@@ -64,6 +64,7 @@ const LeaderTable = () => {
         <i className="material-icons warning-icon">warning</i>
         <i className="material-icons error-icon">error_outline</i>
         <div className="helper-text"></div>
+        <i className="material-icons dropdown-icon">arrow_drop_down</i>
       </div>
       {/* <MaterialTable
         columns={[
