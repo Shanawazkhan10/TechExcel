@@ -121,7 +121,6 @@ const LedgerUi = () => {
                   setValue(newValue);
                 }}
                 renderInput={(params) => <TextField {...params} />}
-                // maxDate={maxDate}
               />
             </LocalizationProvider>
           </Col>

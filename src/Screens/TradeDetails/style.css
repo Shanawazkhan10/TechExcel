@@ -196,7 +196,8 @@ p {
 }
 
 .outlined-input-field {
-  width: 14rem;
+  width: 260px;
+  cursor: pointer;
   position: relative;
   font-family: Roboto;
 }

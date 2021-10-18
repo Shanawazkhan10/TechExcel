@@ -83,7 +83,7 @@ const TradeDetailsUi = () => {
             // marginLeft: "5px",
           }}
         >
-          {/* <Col sm="2">
+          <Col sm="2">
             <FormControl variant="outlined" sx={{ minWidth: 200 }}>
               <InputLabel variant="outlined" id="demo-simple-select-label">
                 Segment
@@ -102,8 +102,8 @@ const TradeDetailsUi = () => {
                 <MenuItem value="Commodity">Commodity</MenuItem>
               </Select>
             </FormControl>
-          </Col> */}
-          <Col sm="2">
+          </Col>
+          {/* <Col sm="2">
             <div className="outlined-input-field">
               <select id="selectLocation" className="outlined-select-field">
                 <option value="" disabled selected></option>
@@ -115,8 +115,8 @@ const TradeDetailsUi = () => {
               <label htmlFor="selectLocation">Segment</label>
               <i className="material-icons dropdown-icon">arrow_drop_down</i>
             </div>
-          </Col>
-          {/* <Col sm="2">
+          </Col> */}
+          <Col sm="2">
             <FormControl variant="outlined" sx={{ minWidth: 200 }}>
               <InputLabel variant="outlined" id="demo-simple-select-label">
                 Symbol
@@ -132,8 +132,8 @@ const TradeDetailsUi = () => {
                 <MenuItem value="IDEA">IDEA</MenuItem>
               </Select>
             </FormControl>
-          </Col> */}
-          <Col sm="2">
+          </Col>
+          {/* <Col>
             <div className="outlined-input-field">
               <select id="selectSymbol" className="outlined-select-field">
                 <option value="" disabled selected></option>
@@ -142,7 +142,7 @@ const TradeDetailsUi = () => {
               <label htmlFor="selectSymbol">Symbol</label>
               <i className="material-icons dropdown-icon">arrow_drop_down</i>
             </div>
-          </Col>
+          </Col> */}
           <Col sm="2">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
